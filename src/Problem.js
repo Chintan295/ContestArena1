@@ -2,6 +2,9 @@ import React from 'react'
 import {getCookie,refresh_token,Logout} from './Login'
 import axios from 'axios'
 import { Redirect,Link } from 'react-router-dom';
+import './General.css'
+import './Loding.css'
+import './Problem.css'
 class Problem extends React.Component{
     constructor(){
         super();
@@ -28,9 +31,9 @@ class Problem extends React.Component{
             console.log(statement);
             statement=statement.split('<br />')
             return <div className="background">
-                <Link to={'/my-app/submit/'+this.state.problem.data.result.data.content.problemCode}><button className="b1 b2">Submit</button></Link>
-                <button className="b1 topright" onClick={this.logout}>Logout</button>
-                <Link to={'/my-app/Gotocontest'}><button className="b1 b3">Home</button></Link>
+                <Link to={'/my-app/submit/'+this.state.problem.data.result.data.content.problemCode}><button className="b2">Submit</button></Link>
+                <button className="topright" onClick={this.logout}>Logout</button>
+                <Link to={'/my-app/Gotocontest'}><button className="b3">Home</button></Link>
                 <h1 className="center">{this.state.problem.data.result.data.content.problemName}</h1>
                 <h4 className="center">{this.state.problem.data.result.data.content.problemCode}</h4 ><hr/>
                 <div className="statement">

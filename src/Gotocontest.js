@@ -4,8 +4,8 @@ import axios from 'axios'
 import {Link} from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
 import './Gotocontest.css'
-import './Template.css'
-import './Text.css'
+import './General.css'
+import './Loding.css'
 class Gotocontest extends React.Component{ 
     constructor(){
         super();
@@ -15,8 +15,9 @@ class Gotocontest extends React.Component{
     }
     change=(e)=>{
         e.persist()
-        if(this.state.contestList.length==0)
+        if(this.state.contestList.length==0){
             this.getContestList();
+        }
         const filteredDataList = this.state.contestList.filter(item => item["code"].toLowerCase().startsWith(e.target.value.toLowerCase())|| item["name"].toLowerCase().startsWith(e.target.value.toLowerCase()) );
         this.setState({filteredList: filteredDataList});
         this.setState({inputvalue: e.target.value});
@@ -44,11 +45,11 @@ class Gotocontest extends React.Component{
         var nameWiseList=(this.state.filteredList.map((item)=>item.name.toString()));
         return(
             <div className="background center">
-                <button className="b1 topright" onClick={this.logout}>Logout</button>
+                <button className="topright" onClick={this.logout}>Logout</button>
                 <div>
                     <p className="head1">Enter a constest name or code :</p> 
                     <input type="text" onChange={this.change} value={this.state.inputvalue}></input>&emsp;
-                    <Link to={'/my-app/contest/'+this.state.contest.code}><button className="b1"> Go</button></Link>
+                    <Link to={'/my-app/contest/'+this.state.contest.code}><button> Go</button></Link>
                     {(this.state.filteredList!=null&&this.state.inputvalue!=''?
                     <ul>
                         {nameWiseList.map((item,i)=> <li key={i}  onClick={this.select}>{item}</li>)}

@@ -3,7 +3,8 @@ import {getCookie,refresh_token,Logout} from './Login'
 import axios from 'axios'
 import Timer from 'react-compound-timer'
 import './Contestpage.css'
-import './Gotocontest.css'
+import './General.css'
+import './Loding.css'
 import { Redirect,Link } from 'react-router-dom';
 
 class Contestpage extends React.Component{
@@ -14,16 +15,19 @@ class Contestpage extends React.Component{
                     contest : null,
                     problemDetails : [],
                     last : 0,
-                    children : []
+                    children : [],
+                    status:"",
+                    remainingTime: 0
                 }
         this.getContestDetails=getContestDetails.bind(this);
         this.getProblemsDetailsList=getProblemsDetailsList.bind(this);
     }
     remainingTime=()=>{
         var contestEndTime = new Date(this.state.contest.data.result.data.content.endDate);
-        var remainingTime=contestEndTime-new Date().getTime();
+        var contestStartTime = new Date(this.state.contest.data.result.data.content.startDate);
+        var remainingTime=contestStartTime-new Date().getTime();
         if(remainingTime>0) return remainingTime;
-        else return 0;
+        
     }
     logout=()=>{
         Logout();
@@ -55,20 +59,20 @@ class Contestpage extends React.Component{
         if(this.state.contest==null){
             this.getContestDetails();
         }
-        else if(this.state.contest!=null&&this.state.problemDetails.length!=this.state.contest.data.result.data.content.problemsList.length){
-          this.getProblemsDetailsList(this.state.contest);
-        }
-        else if(this.state.contest!=null&&this.state.problemDetails.length==this.state.contest.data.result.data.content.problemsList.length){
+        else if(this.state.contest!=null){
+            if(this.state.problemDetails.length!=this.state.contest.data.result.data.content.problemsList.length){
+                this.getProblemsDetailsList(this.state.contest);
+            }
             console.log(this.state.problemDetails);
             return <div className="background"> 
-              <button className="b1 topright" onClick={this.logout}>Logout</button>
-              <Link to={'/my-app/Gotocontest'}><button className="b1 b2">Home</button></Link>
+              <button className="topright" onClick={this.logout}>Logout</button>
+              <Link to={'/my-app/Gotocontest'}><button className="b2">Home</button></Link>
               <h1 className="center">{this.state.contest.data.result.data.content.name}</h1>
               <h5 className="center">{this.state.contest.data.result.data.content.code}</h5>
               <hr/>
               <div className="contestInfo">
-                    {(this.remainingTime()!=0?
-                    <Timer initialTime={this.remainingTime()} direction="backward">
+                    {(this.state.status!="Contest Ended"?
+                    <Timer initialTime={this.state.remainingTime} direction="backward">
                         {() => (
                             <React.Fragment>
                                 <h4><u>Contest starts in</u></h4>
@@ -105,8 +109,8 @@ class Contestpage extends React.Component{
                     {this.state.problemDetails.map((item,i)=>
                         <tr key={i}>
                             <td>{i+1}</td>
-                            <td><Link to={'/my-app/contest/'+this.state.code+'/'+item.problem.problemCode}>{item.problem.problemName}</Link></td>
-                            <td><Link to={'/my-app/contest/'+this.state.code+'/'+item.problem.problemCode}>{item.problem.problemCode}</Link></td>
+                            <td><Link className="Link" to={'/my-app/contest/'+this.state.code+'/'+item.problem.problemCode}>{item.problem.problemName}</Link></td>
+                            <td><Link className="Link" to={'/my-app/contest/'+this.state.code+'/'+item.problem.problemCode}>{item.problem.problemCode}</Link></td>
                             <td>{item.problem.successfulSubmissions}</td>
                             <td>{item.accuracy.toFixed(2)}</td>
                         </tr>
@@ -147,7 +151,21 @@ export function getContestDetails(){
                           }
     })
   .then(res => {
-      this.setState({contest: res, children: res.data.result.data.content.children});
+      var contestEndTime = new Date(res.data.result.data.content.endDate);
+      var contestStartTime = new Date(res.data.result.data.content.startDate);
+      var sta="",rt=0;
+      if(contestStartTime>new Date().getTime()){
+          sta="Contest Starts In :";
+          rt=contestStartTime-new Date().getTime();
+      }
+      else if(contestEndTime>new Date().getTime()){
+          sta="Contest Ends In :";
+          rt=contestEndTime-new Date().getTime();
+      }
+      else{
+          sta="Contest Ended";
+      }
+      this.setState({contest: res, children: res.data.result.data.content.children,status:sta,remainingTime:rt});
       console.log(res);
   })
   .catch(function (error) {

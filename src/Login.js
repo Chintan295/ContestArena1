@@ -1,7 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import {Redirect, Link} from 'react-router-dom'
-import './Text.css'
+import './Login.css'
+import './General.css'
+import './Loding.css'
 
 class Login extends React.Component{
     constructor(props){
@@ -19,14 +21,14 @@ class Login extends React.Component{
     }
     getPermission= () => {
         this.setState({clicked:true});
-        window.location.replace("https://api.codechef.com/oauth/authorize?response_type=code&client_id=b0dc306a0d6b2de128848d06a7ab264d&state=xyz&redirect_uri=http://localhost:3000/my-app");
+        window.location.replace("https://api.codechef.com/oauth/authorize?response_type=code&client_id=b0dc306a0d6b2de128848d06a7ab264d&state=xyz&redirect_uri=https://chintan295.github.io/my-app/");
     }
     getAuthToken=()=>{
         let data={ "grant_type": "authorization_code",
                     "code":this.state.code,
                    "client_id":"b0dc306a0d6b2de128848d06a7ab264d",
                    "client_secret":"514b2f072a880804bbf5fadd7a36f636",
-                   "redirect_uri":"http://localhost:3000/my-app" 
+                   "redirect_uri":"https://chintan295.github.io/my-app/" 
                 }
         axios.post(`https://api.codechef.com/oauth/token`,
                     data,

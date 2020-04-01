@@ -1,0 +1,10 @@
+.statement{
+    width: 60%;
+    height: auto;
+    overflow-y: auto;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    margin:20px;
+    padding: 10px;
+}

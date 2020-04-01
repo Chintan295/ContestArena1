@@ -1,8 +1,10 @@
 .textarea{
     overflow: auto;
     border-radius: 5px;
-    background-color: rgb(104, 104, 104);
-    margin:20px;    
+    background-color: rgb(255, 255, 255);
+    font-family: monospace;
+    font-size: 15px;
+    margin-left:10px;    
 }
 select{
     margin: 10px;
@@ -14,18 +16,18 @@ select{
 }
 .size1{
     width: 70%;
-    height:50%;
+    height:70vh;
 }
 .size2{
-    width:70%;
-    height: 30%;
+    width:330px;
+    height: 27vh;
+    margin: 0px;
 }
-.input{
-    float:left;
+.pos1{
+    position: absolute;
+    top:13%;
+    right:2%;
 }
 .loding{
     cursor: wait;
-}
-h3,label,h1,button{
-    margin-left:20px;
 }

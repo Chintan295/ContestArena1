@@ -3,7 +3,7 @@ import {getCookie,refresh_token,Logout} from './Login'
 import axios from 'axios'
 import {Redirect,Link} from 'react-router-dom'
 import {getContestDetails} from './Contestpage'
-import './Contestpage.css'
+import './General.css'
 import './Loding.css'
 class Ranklist extends React.Component{
     constructor(){
@@ -71,18 +71,18 @@ class Ranklist extends React.Component{
         }
         else if(this.state.ranklist!=null){
             return <div className="background">
-                <Link to={'/my-app/Gotocontest'}><button className="b1 b2">Home</button></Link>
-                <button className="b1 topright" onClick={this.logout}>Logout</button>
+                <Link to={'/my-app/Gotocontest'}><button className="b2">Home</button></Link>
+                <button className="topright" onClick={this.logout}>Logout</button>
                 <h1 className="center">Ranklist</h1>
                 <label>Countries :</label>
                 <input type="text" onChange={this.countryChange} value={this.state.country}></input>&emsp;
                 <label>Institute :</label>
                 <input type="text" onChange={this.instituteChange} value={this.state.institute}></input>
-                <button className="b1" onClick={this.find}>Find</button>
+                <button onClick={this.find}>Find</button>
                 <div className="center">
-                    {(this.state.page!=1?<button onClick={this.prev} className="b1">Prev</button>:<p></p>)}
+                    {(this.state.page!=1?<button onClick={this.prev}>Prev</button>:<p></p>)}
                     <label>{this.state.page}</label>
-                    {(this.state.ranklist.length==1500?<button onClick={this.next} className="b1">Next</button>:<p></p>)}
+                    {(this.state.ranklist.length==1500?<button onClick={this.next}>Next</button>:<p></p>)}
                 </div>
                 <table className="rankList">
                     <tbody>

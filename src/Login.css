@@ -1,0 +1,18 @@
+/* Style the content */
+.Login{
+    position: absolute;
+    top:30%;
+    left:40%;
+    border-radius: 10px;
+    border:2px solid white;
+    background-color: black;
+    height: 300px;
+    width:300px;
+}
+.Login button{
+    position: absolute;
+    top:127px;
+    left:85px;
+    height: 50px;
+    width:100px;
+}

@@ -2,10 +2,9 @@ import React from 'react'
 import {getCookie,refresh_token,Logout} from './Login'
 import axios from 'axios'
 import { Redirect,Link } from 'react-router-dom';
-import './Template.css'
 import './Submit.css'
-import './Gotocontest.css'
-import './Contestpage.css'
+import './General.css'
+import './Loding.css'
 class Submit extends React.Component{
     constructor(){
         super();
@@ -30,7 +29,6 @@ class Submit extends React.Component{
     }
     languageChange=(event)=>{
         event.persist();
-        console.log(event._targetInst.stateNode.selectedOptions["0"].value);
         this.setState({language: event._targetInst.stateNode.selectedOptions["0"].value});
     }
     getLink=()=>{
@@ -38,7 +36,7 @@ class Submit extends React.Component{
             "sourceCode":this.state.code.toString(),
             "language": this.state.language,
             "input": this.state.input
-          };
+            };
         axios.post(`https://api.codechef.com/ide/run`,
                     data,
                     {headers:{'Content-Type': 'application/json',
@@ -46,7 +44,6 @@ class Submit extends React.Component{
                               'Authorization': 'Bearer '+ getCookie('token')}
         })
         .then(res => {
-            console.log(res);
             this.setState({link:res.data.result.data.link,run:true,output:"",cmpInfo:""});
         })
         .catch(function (error) {
@@ -93,9 +90,6 @@ class Submit extends React.Component{
             return <Redirect to='/my-app'/>;
         }
         refresh_token();
-        console.log(this.state.run);
-        console.log(this.state.output+"he");
-        console.log(this.state.cmpInfo+"he");
         if(this.state.run&&this.state.output==""&&this.state.cmpInfo=="")
         {
             setTimeout(this.Run,5000);
@@ -108,19 +102,25 @@ class Submit extends React.Component{
         return <div className="background">
             <Link to={'/my-app/Gotocontest'}><button className="b1 b2">Home</button></Link>
             <button className="b1 topright" onClick={this.logout}>Logout</button>
-            <h1>Enter your code here :</h1>
-            <label>Choose a language:</label>
-            <select value={this.state.language} onChange={this.languageChange}>
-                {(this.state.languageList.length!=0?
-                    this.state.languageList.map((item,i)=> <option key={i}>{item.shortName}</option>):
-                    <option>C</option>)}
-            </select><br/>
-            <textarea value={this.state.code} onChange={this.codeChange} className="textarea size1"></textarea><br/>
-            <h3>Input</h3><br/>
-            <textarea value={this.state.input} onChange={this.inputChange} className="textarea size2"></textarea><br/>
-            <h3>Output :</h3>
-            <textarea value={(this.state.output==""?this.state.cmpInfo:this.state.output)} className="textarea size2"></textarea><br/>
-            {(this.state.run?<button className="b1 loding">Running...</button>:<button onClick={this.getLink} className="b1">Run</button>)}
+            <div>
+                <h1>Enter your code here :</h1>
+                <label>Choose a language:</label>
+                <select value={this.state.language} onChange={this.languageChange}>
+                    {(this.state.languageList.length!=0?
+                        this.state.languageList.map((item,i)=> <option key={i}>{item.shortName}</option>):
+                        <option>C</option>)}
+                </select><br/>
+                <textarea value={this.state.code} onChange={this.codeChange} className="textarea size1"></textarea><br/>
+            </div>
+            <div className="pos1">
+                <h3>Input :</h3>
+                <textarea value={this.state.input} onChange={this.inputChange} className="textarea size2"></textarea>
+                <h3>Output :</h3>
+                <textarea value={(this.state.output==""?this.state.cmpInfo:this.state.output)} className="textarea size2"></textarea><br/>
+            </div>
+            <div className="center">
+                {(this.state.run?<button className="loding">Running...</button>:<button onClick={this.getLink}>Run</button>)}
+            </div>
         </div>
     }
 }

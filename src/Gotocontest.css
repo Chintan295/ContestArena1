@@ -32,32 +32,6 @@ input[type=text] {
     margin: 8px 0;
     box-sizing: border-box;
     background-color: black;
-    color: white;
-}
-.topright{
-    margin:10px;
-    position: absolute;
-    right:0;
-    top:0;
-}
-.b2{
-    position: absolute;
-    right:100px;
-    top:10px;
-}
-.b3{
-    position: absolute;
-    right: 200px;
-    top:10px;
-}
-
-.statement{
-    width: 60%;
-    height: auto;
-    overflow-y: auto;
-    background-color: black;
-    color: white;
     border-radius: 10px;
-    margin:20px;
-    padding: 10px;
+    color: white;
 }
