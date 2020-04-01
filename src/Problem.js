@@ -27,18 +27,18 @@ class Problem extends React.Component{
             statement=statement.split("###").join("");
             console.log(statement);
             statement=statement.split('<br />')
-            return <div class="background">
-                <Link to={'/my-app/submit/'+this.state.problem.data.result.data.content.problemCode}><button class="b1 b2">Submit</button></Link>
-                <button class="b1 topright" onClick={this.logout}>Logout</button>
-                <Link to={'/my-app/Gotocontest'}><button class="b1 b3">Home</button></Link>
-                <h1 class="center">{this.state.problem.data.result.data.content.problemName}</h1>
-                <h4 class="center">{this.state.problem.data.result.data.content.problemCode}</h4 ><hr/>
-                <div class="statement">
+            return <div className="background">
+                <Link to={'/my-app/submit/'+this.state.problem.data.result.data.content.problemCode}><button className="b1 b2">Submit</button></Link>
+                <button className="b1 topright" onClick={this.logout}>Logout</button>
+                <Link to={'/my-app/Gotocontest'}><button className="b1 b3">Home</button></Link>
+                <h1 className="center">{this.state.problem.data.result.data.content.problemName}</h1>
+                <h4 className="center">{this.state.problem.data.result.data.content.problemCode}</h4 ><hr/>
+                <div className="statement">
                     <h3>Problem</h3>
                     {statement.map((item)=><div><Latex>{item}</Latex><br/></div>)}
                 </div>
                 <hr/>
-                <div class="statement">
+                <div className="statement">
                     <p>Author : {this.state.problem.data.result.data.content.author}</p>
                     <p>DateAdded : {this.state.problem.data.result.data.content.dateAdded}</p>
                     <p>Time Limit : {this.state.problem.data.result.data.content.maxTimeLimit} secs</p>
@@ -49,10 +49,10 @@ class Problem extends React.Component{
             </div>
         }
         else
-        return <div class="background">
-                    <div class="wrap">
-                        <div class="spinner-wrap">
-                            <div class="spinner">
+        return <div className="background">
+                    <div className="wrap">
+                        <div className="spinner-wrap">
+                            <div className="spinner">
                                 <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
                             </div>
                         </div>

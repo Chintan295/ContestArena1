@@ -1,21 +1,20 @@
 /* Style the content */
 .Login {
-  margin: 200px 0px 0px 500px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.568);
+  position: absolute;
+  top:30%;
+  left:40%;
   border-radius: 10px;
   border:2px solid white;
   background-color: black;
-  text-align: center;
-  height: 300px ;
+  height: 300px;
   width:300px;
 }
 .Login button{
-    position: relative;
-    top:130px;
+    position: absolute;
+    top:127px;
+    left:80px;
     height: 50px;
     width:100px;
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
 }
 .Login :hover{
     background-color: rgb(23, 23, 23);
@@ -38,3 +37,28 @@
 .content {
     margin: 1em;
 } 
+
+/* division */
+
+.division1{
+    width: 25%;
+    height: 20vh;
+    padding: 10px;
+    position: absolute;
+    background-color: black;
+    color: white;
+    left:3%;
+    top: 24%;
+    border-radius: 10px;
+}
+.division2{
+    width: 25%;
+    height: 20vh;
+    padding: 10px;
+    position: absolute;
+    background-color: black;
+    color: white;
+    left:31%;
+    top: 24%;
+    border-radius: 10px;
+}

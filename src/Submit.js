@@ -105,9 +105,9 @@ class Submit extends React.Component{
         }
         if(this.state.languageList.length==0)
             this.getLanguageList();
-        return <div class="background">
-            <Link to={'/my-app/Gotocontest'}><button class="b1 b2">Home</button></Link>
-            <button class="b1 topright" onClick={this.logout}>Logout</button>
+        return <div className="background">
+            <Link to={'/my-app/Gotocontest'}><button className="b1 b2">Home</button></Link>
+            <button className="b1 topright" onClick={this.logout}>Logout</button>
             <h1>Enter your code here :</h1>
             <label>Choose a language:</label>
             <select value={this.state.language} onChange={this.languageChange}>
@@ -115,12 +115,12 @@ class Submit extends React.Component{
                     this.state.languageList.map((item,i)=> <option key={i}>{item.shortName}</option>):
                     <option>C</option>)}
             </select><br/>
-            <textarea value={this.state.code} onChange={this.codeChange} class="textarea size1"></textarea><br/>
+            <textarea value={this.state.code} onChange={this.codeChange} className="textarea size1"></textarea><br/>
             <h3>Input</h3><br/>
-            <textarea value={this.state.input} onChange={this.inputChange} class="textarea size2"></textarea><br/>
+            <textarea value={this.state.input} onChange={this.inputChange} className="textarea size2"></textarea><br/>
             <h3>Output :</h3>
-            <textarea value={(this.state.output==""?this.state.cmpInfo:this.state.output)} class="textarea size2"></textarea><br/>
-            {(this.state.run?<button class="b1 loding">Running...</button>:<button onClick={this.getLink} class="b1">Run</button>)}
+            <textarea value={(this.state.output==""?this.state.cmpInfo:this.state.output)} className="textarea size2"></textarea><br/>
+            {(this.state.run?<button className="b1 loding">Running...</button>:<button onClick={this.getLink} className="b1">Run</button>)}
         </div>
     }
 }

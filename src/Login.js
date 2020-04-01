@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import {Redirect, Link} from 'react-router-dom'
+import './Text.css'
 
 class Login extends React.Component{
     constructor(props){
@@ -52,17 +53,20 @@ class Login extends React.Component{
           return <Redirect to='/my-app/Gotocontest'/>
         else if(this.state.clicked==false&&this.state.code==null){
           return (
-            <div class="background">
-                <div class="Login">
+            <div className="background">
+                <div className="head">
+                  Welcome to Contest Arena!
+                </div>
+                <div className="Login">
                   <button onClick={this.check}> Login with Codechef </button>
                 </div>
             </div>);
         }
         else{
-          return <div class="background">
-                    <div class="wrap">
-                        <div class="spinner-wrap">
-                            <div class="spinner">
+          return <div className="background">
+                    <div className="wrap">
+                        <div className="spinner-wrap">
+                            <div className="spinner">
                                 <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
                             </div>
                         </div>

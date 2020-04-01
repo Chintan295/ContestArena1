@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
 import './Gotocontest.css'
 import './Template.css'
+import './Text.css'
 class Gotocontest extends React.Component{ 
     constructor(){
         super();
@@ -42,12 +43,12 @@ class Gotocontest extends React.Component{
         console.log(this.state.filteredList);
         var nameWiseList=(this.state.filteredList.map((item)=>item.name.toString()));
         return(
-            <div class="background center">
-                <button class="b1 topright" onClick={this.logout}>Logout</button>
+            <div className="background center">
+                <button className="b1 topright" onClick={this.logout}>Logout</button>
                 <div>
-                    <h1>Enter a constest name or code :</h1> 
+                    <p className="head1">Enter a constest name or code :</p> 
                     <input type="text" onChange={this.change} value={this.state.inputvalue}></input>&emsp;
-                    <Link to={'/my-app/contest/'+this.state.contest.code}><button class="b1"> Go</button></Link>
+                    <Link to={'/my-app/contest/'+this.state.contest.code}><button className="b1"> Go</button></Link>
                     {(this.state.filteredList!=null&&this.state.inputvalue!=''?
                     <ul>
                         {nameWiseList.map((item,i)=> <li key={i}  onClick={this.select}>{item}</li>)}

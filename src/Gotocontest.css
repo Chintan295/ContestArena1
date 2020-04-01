@@ -34,18 +34,6 @@ input[type=text] {
     background-color: black;
     color: white;
 }
-
-.b1{
-    width: auto;
-    height: auto;
-    border-radius: 5px;
-    padding: 10px;
-    background-color: black;
-    color: white;
-}
-.b1:hover{
-    background-color: rgb(23, 23, 23);   
-}
 .topright{
     margin:10px;
     position: absolute;

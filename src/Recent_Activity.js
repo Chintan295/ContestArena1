@@ -45,11 +45,11 @@ class Recent_Activity extends React.Component{
         }
         refresh_token();
         if(this.state.recentSubmissions.length!=0){
-            return <div class="background">
-                <Link to={'/my-app/Gotocontest'}><button class="b1 b2">Home</button></Link>
-                <button class="b1 topright" onClick={this.logout}>Logout</button>
-                <h1 class="center">Recent_Activity</h1>
-                <table class="rankList content"> 
+            return <div className="background">
+                <Link to={'/my-app/Gotocontest'}><button className="b1 b2">Home</button></Link>
+                <button className="b1 topright" onClick={this.logout}>Logout</button>
+                <h1 className="center">Recent_Activity</h1>
+                <table className="rankList content"> 
                     <tbody>
                         <tr>
                             <th><b>Date</b></th>
@@ -69,19 +69,19 @@ class Recent_Activity extends React.Component{
                         )}
                     </tbody>
                 </table>
-                <div class="center">
-                    {(this.state.page!=1?<button onClick={this.prev} class="b1">Prev</button>:<p></p>)}
+                <div className="center">
+                    {(this.state.page!=1?<button onClick={this.prev} className="b1">Prev</button>:<p></p>)}
                     <label>{this.state.page}</label>
-                    {(this.state.recentSubmissions.length==20?<button onClick={this.next} class="b1">Next</button>:<p></p>)}
+                    {(this.state.recentSubmissions.length==20?<button onClick={this.next} className="b1">Next</button>:<p></p>)}
                 </div>
             </div>
         }
         else{
             this.getRecentSubmissions();
-            return <div class="background">
-                <div class="wrap">
-                    <div class="spinner-wrap">
-                        <div class="spinner">
+            return <div className="background">
+                <div className="wrap">
+                    <div className="spinner-wrap">
+                        <div className="spinner">
                             <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
                         </div>
                     </div>

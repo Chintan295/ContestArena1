@@ -1,0 +1,23 @@
+button{
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+button:hover{
+    background-color: rgb(23, 23, 23);   
+}
+.head{
+    font-size: 60px;
+    text-align: center;
+    text-decoration: underline;
+    color: yellow;
+}
+.head1{
+    font-size: 35px;
+    text-align: center;
+    text-decoration: underline;
+    color: yellow;
+}
